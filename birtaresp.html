@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>birta registration page</title>
+  <link rel="stylesheet" href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css">
+  <link rel="stylesheet" href="css/birtareg.css">
+  <link rel="stylesheet" href="css/animate.min.css">
+  <link rel="stylesheet" href="css/slick.css">
+  <!-- plug in -->
+  <script src="js/jquery-3.3.1.min.js"></script>
+  <script src="js/scrolla.jquery.min.js"></script>
+  <script src="js/splitting.min.js"></script>
+  <script src="js/reg.js"></script>
+
+
+</head>
+<body>
+  <div class="wrap">
+    <!-- menuopen -->
+    <div class="menuOpen">
+      <button class="open"><img src="img/menuicon.png" alt=""></button>
+      <div class="menuWrap">
+        <a href="#" class="close"><img src="img/closeicon.png" alt=""></a>
+        <ul>
+          <li><a href="../brita/birtaproduct.html">제품정보</a></li>
+          <li><a href="#">브랜드 스토리</a></li>
+          <li><a href="../brita/birtaresp.html">서비스</a></li>
+          <li><a href="../brita/britafilter.html">필터 재활용</a></li>
+          <li><a href="#">FAQ</a></li>
+        </ul>
+      </div>
+    </div>
+    <!-- header -->
+    <header>
+      <div class="innerHeader">
+        <h1 class="logo">
+          <a href="britaIndex.html">
+            <img src="img/Brita Logo.png" alt="">
+            <img src="img/Brita Logo2.png" alt="">
+          </a>
+        </h1>
+        <nav>
+          <ul class="gnb">
+            <li class="gnbli" >
+              <a href="../brita/birtaproduct.html">제품정보</a>
+              <ul class="lnb">
+                <li><a href="#"><span>정수기</span></a></li>
+                <li><a href="#"><span>필터</span></a></li>
+              </ul>
+            </li>
+            <li>
+              <a href="#">브랜드 스토리</a>
+              <ul class="lnb">
+                <li><a href="#"><span>브리타 이야기</span></a></li>
+                <li><a href="#"><span>지속가능한 음용솔루션</span></a></li>
+                <li><a href="#"><span>더 맛있는 일상</span></a></li>
+              </ul>
+            </li>
+            <li>
+              <a href="../brita/birtaresp.html">서비스</a>
+              <ul class="lnb">
+                <li><a href="#"><span>제품등록</span></a></li>
+                <li><a href="#"><span>뉴스레터</span></a></li>
+              </ul>
+            </li>
+            <li>
+              <a href="../brita/britafilter.html">필터 재활용</a>
+              <ul class="lnb">
+                <li><a href="#"><span>그린리프멤버십</span></a></li>
+                <li><a href="#"><span>온라인 수거신청</span></a></li>
+                <li><a href="#"><span>오프라인 수거함</span></a></li>
+              </ul>
+            </li>
+            <li>
+              <a href="#">FAQ</a>
+              <ul class="lnb">
+                <li><a href="#"><span>자주 찾는 질문</span></a></li>
+              </ul>
+            </li>
+          </ul>
+          <form>
+            <input type="text" value=" ">
+            <input type="submit1" value="" class="submit1">
+          </form>
+        </nav>
+        <a href="#" class="menuOpen"><span class="a"></span><span class="b"></span></a>
+      </div>
+      <div class="gnbBg"></div>
+    </header>
+    <div class="contentsInner">
+    <!-- section visual -->
+    <section class="visual">
+      <div class="inner">
+        <h2 class="animate" data-animate="motion" data-splitting>나의 제품 등록</h2>
+        <p class="subtxt animate" data-animate="motion" data-splitting>구매하신 브리타 제품을 등록하고 다양한 혜택을 누려보세요.</p>
+        <div class="productBox">
+          <p class="title">1.제품코드 혹은 제품명 선택</p>
+          <form action="" method="post">
+            <label for="code">제품코드 입력</label>
+            <input type="text" id="code" placeholder="제품코드를 입력하세요." >
+            <input type="submit" id="ip_submit" class="submit" disabled>
+            <br>
+            <label for="sel">제품을 선택하세요.</label>
+            <select name="" id="sel" style="color: #ddd;">
+              <option value="op1">브리타 스타일 XL</option>
+              <option value="op2">브리타 마렐라</option>
+              <option value="op3">브리타 프로우</option>
+            </select>
+            <input type="submit" id="ip_submit" class="submit"disabled>
+          </form>
+          <p class="bottomTxt">브리타 제품보증 및 교체부품 관련조항이 적용되며, 서비스 이용을 위해서는 제품등록이 필요합니다.</p>
+        </div>
+        <div class="customBox">
+          <p class="title">2.고객정보</p>
+          <form action="" method="post"">
+            <p>
+              <label for="name">이름</label>
+              <input type="text" id="code" placeholder="홍길동">
+            </p>
+            <p class="gender">
+              <label for="gen" >성별</label>
+              <button onclick='alert("여성")' disabled>여성</button>
+              <button onclick='alert("남성")' disabled>남성</button>
+            </p>
+            <p class="countury">
+              <label for="countr">국가</label>
+              <button onclick='alert("내국인")' disabled>내국인</button>
+              <button onclick='alert("외국인")' disabled>외국인</button>
+            </p>
+            <p>
+              <label for="email">이메일</label>
+              <input type="email" id="email" placeholder="email@example.com">
+            </p>
+            <p>
+              <label for="addr">도로명주소</label>
+              <input type="text" id="addr" placeholder="00로 11">
+            </p>
+            <p>
+              <label for="post">우편번호</label>
+            <input type="text" id="post" placeholder="00000">
+            </p>
+            <p>
+              <label for="city">도시명</label>
+              <input type="text" id="city" placeholder="00시">
+            </p>
+          </form>
+        </div>
+      </div>
+    </section>
+<!-- section benefit -->
+    <section class="benefit">
+      <div class="inner animate" data-animate="motion">
+        <div class="top">
+          <h2 class="animate" data-animate="motion" data-splitting>제품 등록 혜택</h2>
+          <p class="img"><img src="img/reg-deco.png" alt=""></p>
+          <ul class="benBox">
+            <li>
+              <p class="title">
+                혜택 1
+                <span>제품 보증기간 1년 연장</span>
+              </p>
+              <p class="icon"><img src="img/reg icon1.png" alt=""></p>
+            </li>
+            <li>
+              <p class="title">
+                혜택 2
+                <span>교체부품 무상공급</span>
+              </p>
+              <p class="icon"><img src="img/reg icon2.png" alt=""></p>
+            </li>
+          </ul>
+        </div>
+        <div class="bottom">
+          <p class="subtxt">다음 내용에 동의하면 추가 혜택을 받으실 수 있습니다.</p>
+          <ul>
+            <li>
+              <input type="checkbox" id="check1"></input>
+              <label for="check1"></label>
+              <p>
+                본인은 BRITA Korea Co., Ltd.가 브리타 제품 및 서비스(정수 필터 시스템, 정수 디스펜서, 부속품 및 서비스), 맞춤형 정보, 제안, 특별 프로모션이 포함된 이메일을 보내기 위해 본인의 호칭, 이름, 이메일 주소, 거주 국가를 수집 및 처리할 수 있음에 동의합니다. 본인은 언제든지 동의 의사를 철회할 수 있습니다. 동의가 철회될 때까지 데이터가 보관됩니다. 본인은 동의를 거부할 권리가 있으며 거부 시 상기 이메일 전송은 거부되거나 제한됩니다. 데이터 보호에 대한 자세한 내용은 여기.를 참조합니다.
+              </p>
+            </li>
+            <li>
+              <input type="checkbox" id="check2"></input>
+              <label for="check2"></label>
+              <p>
+                본인은 BRITA Korea Co., Ltd.가 브리타 제품 및 서비스 (정수 필터 시스템, 정수 디스펜서, 부속품 및 서비스)에 대한 맞춤형 정보, 제안, 특별 프로모션에 대해 이메일로 연락할 수 있음에 동의합니다.
+              </p>
+            </li>
+            <li>
+              <input type="checkbox" id="check3"></input>
+              <label for="check3"></label>
+              <p>
+                [필수] 본인 은 제품 보증 기간 연장 및 기타 혜택을 위해 BRITA Korea Co., Ltd가 본인의 호칭, 이름, 이메일 주소, 등록하려는 제품 정보, 제품 등록용 주소를 수집할 수 있음에 동의합니다. 본인은 언제든지 동의 의사를 철회할 수 있습니다. 관련법령에 의거하여 달리 규정하지 않는 한, 본인의 동의가 철회될 때까지 해당 데이터는 보관됩니다. 본인은 동의를 거부할 권리가 있으며 그로 인해 제품 등록이 처리되지 않을 수 있음을 이해합니다. 데이터 보호에 대한 자세한 내용은 여기 를 참조합니다. 이로써 이벤트 참가 조건을 모두 확인했습니다.
+              </p>
+            </li>
+            <a href="#" class="btn">제출하기</a>
+          </ul>
+        </div>
+      </div>
+    </section>
+    </div>
+  <!-- footer -->
+  <footer>
+    <div class="inner">
+      <div class="top">
+        <h2>(주)브리타코리아</h2>
+      </div>
+      <ul class="bottom">
+        <li class="left">
+          <h3>고객센터</h3>
+          <div class="contact">
+            <p>메일 문의 : info-kr@brita.net</p>
+            <p>운영 시간 : 월-금 09:00 ~ 17:00</p>
+            <p><span>전화 문의 : 080-740-5900</span></p>
+            <p>카카오톡 채널명 : 브리타 코리아</p>
+          </div>
+        </li>
+        <li class="right">
+          <h3>브리타 SNS</h3>
+            <a href="#">
+              <p>KakaoTalk</p>
+              <img src="img/ft_menu_arr1.png" alt="">
+            </a>
+            <a href="#">
+              <p>Instagram</p>
+              <img src="img/ft_menu_arr1.png" alt="">
+            </a>
+            <a href="#">
+              <p>Facebook</p>
+              <img src="img/ft_menu_arr1.png" alt="">
+            </a>
+          </li>
+      </ul>
+      <div class="name">
+        <span>주식회사 브리타 코리아</span>
+        <p>사업자 등록번호: 215-86-87428 / 대표이사: 켈빈프레더릭모우 / 개인정보책임자: 김현주</p>
+      </div>
+    </div>
+  </footer>
+  </div>
+</body>
+</html>
