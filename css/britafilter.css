@@ -1,0 +1,392 @@
+@charset "utf-8";
+
+/* reset */
+* {margin: 0;padding: 0; box-sizing: border-box;}
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, tbody, tfoot, thead, tr, th, td{margin:0;padding:0;}
+a {color: inherit; text-decoration: inherit;}
+li {list-style: none;}
+address, em, i {font-style: normal;}
+button {background: none; border: none;}
+button:focus {outline:none;}
+a:focus {outline:none}
+img {vertical-align: middle;}
+
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans+KR:300,400,700&display=swap');
+@import url('https://github.com/webfontworld/gmarket.git');
+
+/* layout */
+body {font-family:'Gmarket Sans';}
+.wrap {width: 100%; overflow: hidden; text-align: center;}
+header .open {display: none;}
+.inner {width: 80%; margin: 0 auto;}
+.inner h2 {font-size: 48px;}
+.inner .subtxt {font-size: 26px;}
+.inner .txt {font-family: 'Pretendard',sans-serif; font-size: 20px; font-weight: 300;text-align: left;}
+
+/* menuopen */
+.menuOpen .menuWrap {width: 0%; opacity: 0; height: 100vh; top: 0; right: 0; background: #efefef; position: fixed; z-index: 200;}
+.menuOpen .menuWrap ul {position: absolute; top: 50%; left: 25%; transform: translateY(-50%); font-size: 50px; color: #00579E;}
+.menuOpen .menuWrap ul li a {display: inline-block; margin-bottom: 20px; padding: 10px; transition: all 0.3s;}
+.menuOpen .menuWrap ul li a:hover, .menuOpen .menuWrap ul li a:focus { color: #01B1EC; border-bottom: 3px solid #01B1EC;}
+/* close */
+.menuOpen .menuWrap .close {position: absolute; top: 10%; right: 4%; transform: translateY(-50%); }
+/* open 열기 */
+.menuOpen button.open { position: fixed; z-index: 200; top: 5%; transform: translateY(-50%); right: 4%; cursor: pointer;} 
+.menuOpen .menuWrap.on {width: 100%; transition: all 0.8s; opacity: 1;}
+
+/* header */
+header {width: 100%; position: fixed; left: 0; top: 0; z-index: 100; font-family: 'Pretendard'; box-sizing: border-box;}
+.innerHeader {width: 100%; height: 90px; padding: 0 80px;  position: relative;}
+.innerHeader .logo {width: 140px; float: left; transition: all 0.4s; margin-top: 20px;}
+.innerHeader .logo a {display: block; width: 100%; height: 100%; position: relative;}
+.innerHeader .logo a img {position:absolute; top: 0; left: 0; transition: all 0.4s; width: 100%;}
+.innerHeader .logo a img:nth-child(2) {opacity: 0; top: 0; width: 30px;}
+header .menuOpen {display: none;}
+header .gnbBg {position: absolute; left: 0; top: 0; height: 0; width: 100%; background: #fff; height: 0px; z-index: -1;}
+header .gnbBg.on {height: 300px;}
+/* header hover */
+header:hover {background: #fff; border-bottom: 1px solid #EFEFEF; transition: all 0.4s;}
+header.on {height: 90px; background: #fff; border-bottom: 1px solid #EFEFEF; transition: all 0.4s;}
+header.on .innerHeader .logo img:nth-child(1) {opacity: 0;}
+header.on .innerHeader .logo img:nth-child(2) {opacity: 1; left: 25%; top: 10px;}
+header.on .innerHeader form {opacity: 0;}
+/* nav */
+.innerHeader nav {position: relative; }
+.innerHeader nav .gnb {position: absolute; left: 46%; transform: translateX(-50%); width: 800px;}
+.innerHeader nav .gnb > li {float: left; position: relative; width: 20%; height: 90px; line-height: 90px; text-align: center; }
+.innerHeader nav .gnb > li > a {display: block; width: 100%; height: 100%; text-align: center; font-weight:normal; font-size: 18px; box-sizing: border-box;}
+.innerHeader nav .gnb > li > a::before {position: absolute; content: ''; width: 100%; height: 100%;  transition: all 0.3s; opacity: 0; left: 0;top: 0; z-index: -1; background:rgba(218, 242, 254, 0.5);}
+/* nav hover */
+.innerHeader nav .gnb > li:hover > a::before, .innerHeader nav .gnb > li:focus > a::before {opacity: 1; top: 0;}
+.innerHeader nav .gnb > li:hover {color: #00579E;}
+/* lnb */
+.gnb li ul.lnb {position: absolute; width: 100%; transition: all 0.4s; box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);  box-sizing: border-box; background: #fff; opacity: 0; padding: 0; line-height: 0px; color: #000;}
+.gnb li ul.lnb.on {opacity: 1; height: 200px; line-height: 50px;}
+.gnb li ul.lnb li {box-sizing: border-box;}
+.gnb li ul.lnb li a {display: block; width: 100%; height: 100%;}
+.gnb li ul.lnb li a span {display: block; position: relative; }
+.gnb li ul.lnb li a span::after {content: ''; width: 0%; height: 1px; background: #01B1EC; position: absolute; left: 0; bottom: 0px; transition: all 0.3s;}
+.gnb li ul.lnb li a:hover span::after, .gnb li ul.lnb li a:focus span::after {width: 100%;}
+.gnb li ul.lnb li a:hover {color: #01B1EC;}
+/* form */
+.innerHeader form {display: inline-block; border: none; position: absolute; top:0; right: 10%; margin-top: 32px;}
+.innerHeader form input[type=text] { width: 20vw; height:30px; margin-left: 16px; border:1px solid #efefef; border-radius:15px; width:220px; height: 30px; background:#fff;}
+.innerHeader form input[type=submit1] {width: 28px; height: 28px; border: none; border-radius: 100px; background:url(../img/searchicon.png) no-repeat center; position: absolute; right:4%; top: 0; }
+
+/* contents Inner */
+.contentsInner {background: #fff; margin-top: 90px; margin-bottom: 400px;}
+
+
+/* visual */
+.visual {width: 100%; height: 1040px; overflow: hidden; background: url(../img/filter\ main\ bg.png) no-repeat center/cover ; position: relative;}
+.visual .inner {display: flex; justify-content: space-between;}
+.visual .inner .left {width: 50%; padding: 300px 0 0;  text-align: left;}
+.visual .inner .left h2 {font-size: 68px; font-weight: bold; margin: 30px 0;}
+.visual .inner .left p {font-size: 32px; font-weight: normal; color: #fff;}
+.visual .inner .right {width: 50%; padding: 200px 0 0; text-align: center; position: relative;}
+.visual .inner .right p {display: inline-block; font-size: 20px; font-weight: bold; color: #fff; line-height: 1.2;}
+.visual .inner .right .ltxt { padding: 30px; background: #00579E; box-shadow: 0 0 4px rgba(183, 183, 183, 0.2); border-radius: 60px; position: absolute; left: -5%; top: 58%;}
+.visual .inner .right .rtxt { padding: 30px; background: #00579E; box-shadow: 0 0 4px rgba(183, 183, 183, 0.2); border-radius: 60px; position: absolute; right: -10%; top: 50%;}
+.visual .inner .right .filterimg {}
+.visual .inner .circlebg {position: absolute; bottom: 0;right: 0; animation: bg 1.6s;}
+/* ani */
+
+.visual .inner .left.motion h2 {animation: txt1 1.6s; transition: all 0.8s;}
+.visual .inner .left.motion p {animation: txt1 1.2s; transition: all 0.8s;}
+
+@keyframes txt1 {
+  0% {opacity: 0; transform: translateX(-150px) }
+  20% {opacity: 0; transform: translateX(-150px) }
+}
+
+.visual .inner .right.motion {animation: bg  1.9s; transition: all 0.8s;}
+.visual .inner .right.motion .ltxt {animation: txt2 1.9s; transition: all 0.8s;}
+.visual .inner .right.motion .rtxt {animation: txt2 2.2s; transition: all 0.8s;}
+
+@keyframes bg {
+    0% {opacity: 0; transform: scale(1.25);}
+    100% {opacity: 1;}
+  }
+  @keyframes txt2 {
+    0% {opacity: 0; }
+    40% {opacity: 0;}
+    100% {opacity: 1; }
+  }
+  
+
+
+
+/* section story */
+.story {width: 100%;}
+.story .inner { width: 70%; margin: 0 auto;  padding: 280px 0 100px; }
+.story .inner h2 {margin-bottom: 120px; background: linear-gradient(to right bottom, #00579E, #EFEFEF); color: transparent; -webkit-background-clip: text;}
+.story .inner .txt { margin-bottom: 20px; line-height: 1.3;}
+.story .inner .btnBox {display: flex; justify-content: space-between; margin: 140px 0; }
+.story .inner .btnBox a {display: block; font-size: 32px; padding: 80px 50px 50px; border-radius: 100%; line-height: 1.2; color: #fff; box-shadow: 0 0 5px rgba(183, 183, 183, 0.9);}
+.story .inner .btnBox a:nth-child(1) {background: #82D0F6;}
+.story .inner .btnBox a:nth-child(2) {background: #01B1EC;}
+.story .inner .btnBox a:nth-child(3) {background: #00579E;}
+.story .inner .btnBox a span {display: block; margin: 20px 0;}
+/* hover */
+.story .inner .btnBox a:hover {background: rgba(0, 0, 0, 0.2); transition: all 0.8s;}
+/* ani */
+.inner h2.motion {animation: title1 1.2s; transition: all 0.8s;}
+@keyframes title1 {
+    0% {opacity: 0; transform: translateY(-50px) }
+    20% {opacity: 0; transform: translateY(-50px) }
+  }
+  .inner .subtxt.motion {animation: title1 1.6s; transition: all 0.8s;} 
+/* .story .inner h2.motion .char {display: inline-block; animation: slide-up 1s cubic-bezier(.10, 0, .10, 1) both;
+    animation-delay: calc(60ms * var(--char-index));}
+    @keyframes slide-up {
+        0% {opacity: 0; }
+        30% {opacity: 0; }
+      } */
+
+
+/* section recycle */
+.recycle {width: 100%; background: #efefef; }
+.recycle .inner {padding: 200px 0;}
+.recycle .inner h2 {margin-bottom: 80px; }
+.recycle .inner .subtxt {color: #8d8d8d; margin:40px}
+.recycle .inner ul {display: flex; justify-content: space-between; }
+.recycle .inner ul li {width: 32%; background: #fff; border-radius: 10px; padding: 40px 40px 80px;}
+.recycle .inner ul li .img {overflow: hidden; margin-bottom: 20px; box-sizing: border-box;}
+.recycle .inner ul li .img img {width: 100%;}
+.recycle .inner ul li .title {font-size: 32px; color: #000; margin-bottom: 20px; }
+.recycle .inner ul li .txt { overflow:hidden; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; text-align: justify;}
+
+/* hover */
+.recycle .inner ul li:hover .txt {overflow:auto; transition: all 2s;}
+.recycle .inner ul li .img:hover img {transform: scale(1.2); transition: all 0.8s;}
+/* ani */
+recycle .inner ul.motion li {animation-name: upmotion; animation-duration: 0.5s;}
+.recycle .inner ul.motion li:nth-child(2) {animation-duration: 0.6s;}
+.recycle .inner ul.motion li:nth-child(3) {animation-duration: 0.7s;}
+
+@keyframes upmotion {
+    0% {opacity: 0; transform: translateY(200px);}
+    30% {opacity: 0; transform: translateY(200px);}
+  }
+
+  /* display: -webkit-box; //상자정렬
+  -webkit-line-clamp: 3; //생략부호가 적용되는 라인 수
+  -webkit-box-orient: vertical; //박스가 수직방향을 배치
+  text-align: justify; */
+
+/* britasafe */
+.britaSafe {width: 100%; background: url(../img/grid.png) no-repeat top ; font-family: 'pretendard',sans-serif; }
+.britaSafe .inner {width: 70%; padding: 200px 0; position: relative;}
+.britaSafe .inner h2 {color: #00579E; margin-bottom: 80px; font-family: 'Gmarket Sans';}
+.britaSafe .inner .decobg {position: absolute; top: 5%; left: 50%; transform: translateX(-50%);}
+.britaSafe .inner .subtxt {text-align: center; color: #8d8d8d; font-weight: normal; margin-bottom: 40px;}
+.britaSafe .inner .globalimg {}
+.britaSafe .inner .globalimg img {width: 100%; margin-bottom: 18px;}
+.britaSafe .inner p {font-size: 20px; text-align: left; color: #8d8d8d; font-weight: 300;}
+.britaSafe .inner .txt {margin: 30px 0 180px; color: #000; line-height: 1.4;}
+.britaSafe .inner .korea { position: relative;}
+.britaSafe .inner .korea .txt {margin-bottom: 30px; }
+.britaSafe .inner .korea .imgstar2 {position: absolute; left: 14%; top: -4%; animation: star 3s;}
+.britaSafe .inner .korea .imgstar2 img {width: 50px;}
+.britaSafe .inner .korea .imgstar {position: absolute; right: 14%; top: 4%;}
+.britaSafe .inner .korea .imgstar img {width: 35px;}
+.britaSafe .inner .korea .memberimg {width: 100%;}
+.britaSafe .inner .korea .memberimg img { width: 100%;} 
+.britaSafe .inner .lessBox {display: flex; justify-content: space-between;  margin: 100px 0 50px; }
+.britaSafe .inner .lessBox li {text-align: center; border-radius: 50%;  padding:40px 70px;background: #00579E;}
+.britaSafe .inner .lessBox li p {text-align: center; color: #fff; font-weight: bold; font-family: 'Gmarket Sans'; line-height: 1.4;}
+.britaSafe .inner .lessBox li p span {font-weight: 300;}
+.britaSafe .inner .lesstxt {text-align: center; color: #000; font-size: 16px; line-height: 1.4; margin: 30px 0; padding-top: 40px;}
+
+
+/* hover */
+.britaSafe .inner .lessBox li:hover {background: rgba(0, 0, 0, 0.2); transition: all 0.8s;}
+/* ani */
+.britaSafe .inner.motion .global {animation: ul 2s;}
+.britaSafe .inner.motion .korea {animation: ul2 3s;}
+.britaSafe .inner.motion .korea .imgstar2 {animation: rotateAni 3s;}
+.britaSafe .inner.motion .korea .imgstar {animation: rotateAni 3s;}
+@keyframes rotateAni {
+  0% {opacity: 0; }
+  40% {opacity: 1; transform: rotate(360deg);}
+}
+
+/* section how */
+.how {width: 100%; background:#FFF9E9; position: relative;}
+.how .inner {width: 70%; padding: 280px 0;}
+.how .inner .top h2 {margin-bottom: 80px;}
+.how .inner .top .subtxt {display: inline-block; background: #00579E; color: #fff;  padding: 10px 15px; margin-bottom: 30px;}
+.how .inner .bottom {display: flex; justify-content: space-between; margin: 150px 0;}
+.how .inner .bottom li {width: 48%;  background: rgba(251, 209, 84, 0.1) ; border-radius: 40px; box-shadow: 0 0 10px rgba(183, 183, 183, 0.4); position: relative;}
+.how .inner .bottom li .title {font-size: 26px; font-weight: bold; color: #076324; margin: 30px 0 20px;}
+.how .inner .bottom li .txt1, .how .inner .bottom li .txt2 { padding: 0 80px 40px; text-align: left; line-height: 1.8;}
+.how .inner .bottom li .txt1 {position: relative; margin-left: 30px;}
+.how .inner .bottom li .txt1 span {position: absolute; display:inline-block; width: 20px; height: 50px; left: 9%;}
+.how .inner .bottom li .point {color: #FFA800; padding: 0 40px 40px;}
+.how .inner .bottom .btn {display: block; background: #076324; color: #fff; width: 280px; padding: 20px; border-radius: 50px; font-size: 24px; position: absolute; bottom: -20%; left: 50%; transform: translateX(-50%);}
+.how .inner .decoimg1 {position: absolute; top: 0; left: 0;}
+.how .inner .decoimg1 img {width: 100%;}
+.how .inner .decoimg2 {position: absolute; bottom: 0; right: 0;}
+.how .inner .decoimg2 img {width: 100%;}
+
+.how .inner.motion .top {animation: title1 1.8s;}
+.how .inner.motion .decoimg1 {animation: txt1 1.4s; transition: all 0.8s;}
+.how .inner.motion .decoimg2 {animation: ul2 1.4s; transition: all 0.8s;}
+
+@keyframes ul {
+    0% {opacity: 0; transform: translateX(-1000px) }
+  }
+@keyframes ul2 {
+    0% {opacity: 0; transform: translateX(1000px) }
+    20% {opacity: 0; transform: translateX(1000px) }
+  }
+
+  .how .inner.motion .bottom li:nth-child(1) {animation: ul 2s;}
+  .how .inner.motion .bottom li:nth-child(2) {animation: ul2 2s;}
+
+
+/* footer */
+footer {position: fixed; left: 0; bottom: 0; width: 100%; height: 400px; box-sizing: border-box; z-index: -1; background:#000;  color: #8D8D8D; padding: 40px 0; text-align: left;}
+footer .inner {width: 85%; margin: 0 auto; font-size: 14px; font-family: 'pretendard';}
+footer .top { width: 100%; padding: 16px 0; border-bottom:1px solid #555;}
+footer .top h2 {font-size: 1.2vw; color: #00579E; font-weight: 600;}
+footer .bottom {display: flex; justify-content: space-between; padding: 20px 0;}
+footer .bottom .left {width: 50%;}
+footer .bottom .left h3 {font-size: 0.9vw; margin-bottom: 16px;}
+footer .bottom .left p {margin-bottom: 20px;}
+footer .bottom .left p span {color:#8D8D8D;}
+footer .bottom .contact p {display: inline-block; width: 317px; line-height: 2px; font-size: 0.8vw;}
+footer .bottom .right {width: 10%;}
+footer .bottom .right h3 {margin-bottom: 16px; font-size: 0.9vw;}
+footer .bottom .right a {display: block; font-size: 0.9vw; margin-bottom: 14px; transition: all 0.4s;}
+footer .bottom .right a p {display: inline-block; font-size: 0.9vw; margin-right: 5px;}
+footer .bottom .right a img {width: 12px; height: 12px; padding-bottom: 2px;}
+footer .bottom .right a:hover {color: #00579E; }
+footer .name span {color: #00579E; font-size: 0.9vw;}
+footer .name p {margin: 10px 0; font-size: 0.8vw;}
+
+
+
+/* 반응형 */
+/* 1600px이하 */
+@media screen and (max-width:1600px){
+
+}
+
+
+/*1400px*/
+@media screen and (max-width:1400px){
+    .inner {width: 90%;}
+    .innerHeader form {display: none;}
+    .britaSafe .inner .korea .imgstar2 {left: 2%; top: -4%;}
+    .britaSafe .inner .korea .imgstar {right: 3%; top: 4%;}
+    .britaSafe .inner .lessBox li { padding: 30px 50px;}
+    .britaSafe .inner .lessBox li img {width: 140px; height: 140px;}
+    .britaSafe .inner .lessBox li p {font-size: 14px;}
+    .how .inner .top img {width: 1000px;}
+    .how .inner .bottom li .txt1, .how .inner .bottom li .txt2 {padding: 40px;}
+    .how .inner .bottom li .txt1 span {height: 30px; width: 10px; left: 2%;}
+    footer .bottom .left {width: 90%; }
+  
+  }
+
+
+  
+/*1024px*/
+@media screen and (max-width:1024px){
+    .innerHeader form {display: none;}
+    .innerHeader nav .gnb {width: 80%; margin-left: 140px;}
+    .visual .inner .left h2 {padding-left: 30px; font-size: 48px; margin: 10px 0;}
+    .visual .inner .left p {padding-left: 30px; font-size: 26px;}
+    .visual .inner .right .rtxt {right: 0; top: 600px;}
+    .story .inner .btnBox a {font-size: 20px;padding: 40px 30px 30px;}
+    .story .inner .btnBox a span { marign: 0;}
+    .recycle .inner h2 {font-size: 40px;}
+    .recycle .inner .subtxt {font-size: 20px; font-weight: 500;}
+    .recycle .inner ul {width: 90%; margin: 0 auto;}
+    .recycle .inner ul li {padding: 30px 30px 40px;}
+    .recycle .inner ul li .title {font-size: 20px;}
+    .recycle .inner ul li .txt {font-size: 14px; -webkit-line-clamp: 4;}
+    .britaSafe .inner h2 {font-size: 40px;}
+    .britaSafe .inner .decobg img {width:800px;}
+    .britaSafe .inner .korea .imgstar2 {left: -4%;}
+    .britaSafe .inner .korea .imgstar {right: -4%;}
+    .britaSafe .inner .lessBox li {background: none;}
+    .britaSafe .inner .lessBox li:hover {background: none;}
+    .britaSafe .inner .lessBox li img {width: 100px; height: 100px;}
+    .britaSafe .inner .lessBox li p {font-size: 14px; color: #00579E;}
+    .how .inner {width: 80%;}
+    .how .inner .top h2 {font-size: 40px;}
+    .how .inner .top img {width: 100%;}
+    .how .inner .bottom {display: block;}
+    .how .inner .bottom li:nth-child(1) {width: 100%; margin-bottom: 200px;}
+    .how .inner .bottom li:nth-child(2) {width: 100%;}
+    .how .inner .bottom li .title {padding-top: 40px;}
+    .how .inner .bottom li:nth-child(2) .btn {bottom: -50%;}
+    .how .inner .decoimg1 {width: 50%;}
+    footer .bottom .left {width: 80%;}
+    footer .bottom .right {width: 15%;}
+}
+
+  /*768px*/
+  @media screen and (max-width:768px){
+    .inner {width: 90%;}
+    .inner h2 {font-size: 34px;}
+    .inner .subtxt {font-size: 14px;}
+    .innerHeader form {display: none;}
+    .innerHeader nav .gnb {display: none;}
+    .visual .inner .left h2 {font-size: 36px;}
+    .visual .inner .left p {font-size: 20px;}
+    .visual .inner .right .rtxt {display: none;}
+    .visual .inner .right .ltxt {display: none;}
+    .visual .inner .right .filterimg {z-index: -1;}
+    .story .inner {width: 80%;}
+    .story .inner .btnBox a {font-size: 14px; padding: 30px 18px 20px;}
+    .story .inner .btnBox a span {margin: 10px 0;}
+    .recycle .inner h2 {font-size: 30px;}
+    .recycle .inner p {font-size: 18px;}
+    .recycle .inner ul {display: block;}
+    .recycle .inner ul li {width: 88%; margin: 40px auto;}
+    .britaSafe .inner .decobg {top:9%;}
+    .britaSafe .inner .decobg img {width: 680px;}
+    .britaSafe .inner p {font-size: 14px;}
+    .britaSafe .inner .korea .imgstar2 img {width: 20px;}
+    .britaSafe .inner .korea .imgstar img {width: 15px;}
+    .britaSafe .inner .lessBox {display: none;}
+    .britaSafe .inner .lesstxt {font-size: 14px;}
+    .how .inner {width: 80%;}
+    .how .inner .top img {width: 100%;}
+    .how .inner .bottom {display: block;}
+    .how .inner .bottom li:nth-child(1) {width: 100%; margin-bottom: 200px; font-size: 14px;}
+    .how .inner .bottom li:nth-child(2) {width: 100%; font-size: 14px;}
+    .how .inner .bottom li .title {padding-top: 40px; font-size: 20px;}
+    .how .inner .bottom li .btn {font-size: 16px;}
+    .how .inner .bottom li:nth-child(2) .btn {bottom: -50%;}
+    .how .inner .decoimg1 {width: 40%;}
+    .how .inner .decoimg1 img {width: 100%;}
+    .how .inner .decoimg2 {width: 40%;}
+    .how .inner .decoimg2 img {width: 100%;}
+    footer .bottom .left {width: 80%;}
+    footer .bottom .contact p {width: 200px;}
+  }
+    
+     /*320모바일*/
+     @media screen and (max-width:320px) {
+      h2 {font-size: 20px;}
+      header .innerHeader .logo img:nth-child(1) {opacity: 0;}
+      header .innerHeader .logo img:nth-child(2) {opacity: 1; left: -30%; top: 10px;}
+      header.on .innerHeader .logo img:nth-child(2) {opacity: 1; left: -30%; top: 10px;}
+      .visual .inner {display: block;}
+      .visual .inner .left { width: 100%; z-index: 200;}
+      .visual .inner .left h2 { font-size: 20px;}
+      .visual .inner .right {position: absolute;left: 0;top: 0;}
+      .story .inner h2 {font-size: 20px;}
+      .story .inner .btnBox {display: none;}
+      .story .inner .txt {font-size: 16px;}
+      .recycle .inner h2 {font-size: 20px;}
+      .recycle .inner .subtxt {font-size: 16px;}
+      .britaSafe .inner .decobg {display: none;}
+      .britaSafe .inner h2 {font-size: 20px;}
+      .britaSafe .inner .lesstxt {font-size: 10px;}
+      .how .inner .top h2 {font-size: 20px;}
+     }

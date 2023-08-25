@@ -1,0 +1,182 @@
+@charset "utf-8";
+
+/* reset */
+* {margin: 0;padding: 0; box-sizing: border-box;}
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, tbody, tfoot, thead, tr, th, td{margin:0;padding:0;}
+a {color: inherit; text-decoration: inherit;}
+li {list-style: none;}
+address, em, i {font-style: normal;}
+button {background: none; border: none;}
+button:focus {outline:none;}
+a:focus {outline:none}
+img {vertical-align: middle;}
+
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans+KR:300,400,700&display=swap');
+@import url('https://github.com/webfontworld/gmarket.git');
+
+/* layout */
+body {font-family:'Gmarket Sans';}
+.wrap {width: 100%; overflow: hidden;}
+.inner {width: 70%; margin: 0 auto; }
+.inner h2 {font-size: 48px; text-align: center;}
+.inner .subtxt {font-size: 26px;text-align: center;}
+.inner .txt {font-family: 'Pretendard',sans-serif; font-size: 20px; font-weight: 300;}
+
+/* menuopen */
+.menuOpen .menuWrap {width: 0%; opacity: 0; height: 100vh; top: 0; right: 0; background: #efefef; position: fixed; z-index: 200;}
+.menuOpen .menuWrap ul {position: absolute; top: 50%; left: 25%; transform: translateY(-50%); font-size: 50px; color: #00579E;}
+.menuOpen .menuWrap ul li a {display: inline-block; margin-bottom: 20px; padding: 10px; transition: all 0.3s;}
+.menuOpen .menuWrap ul li a:hover, .menuOpen .menuWrap ul li a:focus { color: #01B1EC; border-bottom: 3px solid #01B1EC;}
+/* close */
+.menuOpen .menuWrap .close {position: absolute; top: 10%; right: 4%; transform: translateY(-50%); }
+/* open 열기 */
+.menuOpen button.open { position: fixed; z-index: 200; top: 5%; transform: translateY(-50%); right: 4%; cursor: pointer;} 
+.menuOpen .menuWrap.on {width: 100%; transition: all 0.8s; opacity: 1;}
+
+/* header */
+header {width: 100%; position: fixed; left: 0; top: 0; z-index: 100; font-family: 'Pretendard'; box-sizing: border-box;}
+.innerHeader {width: 100%; height: 90px; padding: 0 80px;  position: relative;}
+.innerHeader .logo {width: 140px; float: left; transition: all 0.4s; margin-top: 20px;}
+.innerHeader .logo a {display: block; width: 100%; height: 100%; position: relative;}
+.innerHeader .logo a img {position:absolute; top: 0; left: 0; transition: all 0.4s; width: 100%;}
+.innerHeader .logo a img:nth-child(2) {opacity: 0; top: 0; width: 30px;}
+header .menuOpen {display: none;}
+header .gnbBg {position: absolute; left: 0; top: 0; height: 0; width: 100%; background: #fff; height: 0px; z-index: -1;}
+header .gnbBg.on {height: 300px;}
+/* hover */
+header:hover {background: #fff; border-bottom: 1px solid #EFEFEF; transition: all 0.4s;}
+header.on {height: 90px; background: #fff; border-bottom: 1px solid #EFEFEF; transition: all 0.4s;}
+header.on .innerHeader .logo img:nth-child(1) {opacity: 0;}
+header.on .innerHeader .logo img:nth-child(2) {opacity: 1; left: 25%; top: 10px;}
+header.on .innerHeader form {opacity: 0;}
+
+/* nav */
+.innerHeader nav {position: relative; }
+.innerHeader nav .gnb {position: absolute; left: 46%; transform: translateX(-50%); width: 800px;}
+.innerHeader nav .gnb > li {float: left; position: relative; width: 20%; height: 90px; line-height: 90px; text-align: center; }
+.innerHeader nav .gnb > li > a {display: block; width: 100%; height: 100%; text-align: center; font-weight:normal; font-size: 18px; box-sizing: border-box;}
+.innerHeader nav .gnb > li > a::before {position: absolute; content: ''; width: 100%; height: 100%;  transition: all 0.3s; opacity: 0; left: 0;top: 0; z-index: -1; background:rgba(218, 242, 254, 0.5);}
+/* hover */
+.innerHeader nav .gnb > li:hover > a::before, .innerHeader nav .gnb > li:focus > a::before {opacity: 1; top: 0;}
+.innerHeader nav .gnb > li:hover {color: #00579E;}
+
+/* lnb */
+.gnb li ul.lnb {position: absolute; width: 100%; transition: all 0.4s; box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);  box-sizing: border-box; background: #fff; opacity: 0; padding: 0; line-height: 0px; color: #000;}
+.gnb li ul.lnb.on {opacity: 1; height: 200px; line-height: 50px;}
+.gnb li ul.lnb li {box-sizing: border-box;}
+.gnb li ul.lnb li a {display: block; width: 100%; height: 100%;}
+.gnb li ul.lnb li a span {display: block; position: relative; }
+.gnb li ul.lnb li a span::after {content: ''; width: 0%; height: 1px; background: #01B1EC; position: absolute; left: 0; bottom: 0px; transition: all 0.3s;}
+.gnb li ul.lnb li a:hover span::after, .gnb li ul.lnb li a:focus span::after {width: 100%;}
+.gnb li ul.lnb li a:hover {color: #01B1EC;}
+/* form */
+.innerHeader form {display: inline-block; border: none; position: absolute; top:0; right: 10%; margin-top: 32px;}
+.innerHeader form input[type=text] { width: 240px; height:30px; margin-left: 16px; border:1px solid #efefef; border-radius:15px; width:220px; height: 30px; background:#fff;}
+.innerHeader form input[type=submit1] {width: 28px; height: 28px; border: none; border-radius: 100px; background:url(../img/searchicon.png) no-repeat center; position: absolute; right:4%; top: 0; }
+
+
+/* contents Inner */
+.contentsInner {background: #fff; margin-top: 90px; margin-bottom: 400px;}
+
+/* visual */
+.visual {width: 100%; height: 100%; }
+.visual .inner {padding: 200px 0; }
+.visual .inner h2 {margin-bottom: 80px; color: #00579E;}
+.visual .inner .subtxt {margin-bottom: 40px;}
+.visual .inner .title {font-size: 20px; margin-bottom: 20px; }
+.visual .inner .productBox {margin-bottom: 80px;}
+.visual .inner .productBox .bottomTxt {text-align: center;}
+.visual .inner form {position: relative; font-size: 20px; border: 1px solid #8D8D8D; border-radius: 20px; padding: 40px 60px; margin-bottom: 20px; }
+.visual .inner label {display: inline-block; width: 180px; position: relative;}
+.visual .inner input, select {width: 70%; height: 60px; font-size: 18px; text-align: center; background: #efefef; border: none; margin: 10px 30px; font-family: 'Gmarket Sans';font-weight: normal; }
+.visual .inner .submit {position: absolute; width: 60px; border-radius: 100px; font-weight: bold; }
+/* .visual .inner .submit::after {content: '입력';background: #8d8d8d;width: 20px; height: 20px;} */
+/* input[id="ip_submit"] + label {position: absolute; left: -4%; top: 0;  display: inline-block; width: 20px; height: 20px;background: #EFEFEF; box-shadow: 0 0 3px rgba(0, 0, 0, 0.2); border-radius: 2px; cursor: pointer; position: relative; }
+input[id="ip_submit"]::after {content: '입력'; text-align: center; background: #8d8d8d;width: 20px; height: 20px; border-radius: 2px; cursor: pointer; position: absolute; left: 0;top: 0;}
+input[id="ip_submit"] {display:none; } */
+
+
+
+.visual .inner .customBox form input {text-align: left; background: none; color: #ddd;}
+.visual .inner .customBox form p { border-bottom: 1px solid #efefef; padding-bottom: 4px;}
+.visual .inner .customBox form .countury {position: absolute; right: 2%; top: 23%; width: 600px; border: none;}
+.visual .inner .customBox form .gender { padding: 12px 0; }
+.visual .inner .customBox .countury input {width: 300px; border: none;}
+.visual .inner .customBox form button {display: inline-block; width: 160px; padding: 20px; border: 1px solid #ddd; border-radius: 10px; text-align: center; font-family: 'Gmarket Sans'; cursor: pointer; margin-left: 20px; font-size: 18px; color: #ddd;}
+.visual .inner .customBox form button:hover {border: 1px solid #01B1EC; color: #01B1EC;}
+
+.inner h2.motion .char {display: inline-block; animation: slide-up 1s cubic-bezier(.10, 0, .10, 1) both;
+    animation-delay: calc(60ms * var(--char-index));}
+  
+  @keyframes slide-up {
+    0% {opacity: 0; }
+    30% {opacity: 0; }
+  }
+  .inner .subtxt.motion .char {display: inline-block; animation: slide-up2 1s cubic-bezier(.10, 0, .10, 1) both;
+    animation-delay: calc(60ms * var(--char-index)); }
+    @keyframes slide-up2 {
+      0% {opacity: 1; color:#00579E}
+      100% {opacity: 1; }
+    }
+  
+
+
+/* section benefit */
+.benefit {background: #DAF2FE;}
+.benefit .inner {padding: 240px 0; position: relative;}
+.benefit .inner .top { margin: 0 auto 80px; width: 90%;}
+.benefit .inner .top h2 {margin-bottom: 160px;}
+.benefit .inner .top .img {position: absolute; top: 13%; left: 50%; transform: translateX(-50%);}
+.benefit .inner .top .benBox {display: flex; justify-content: space-between;}
+.benefit .inner .top .benBox li {width: 47%; background: #fff; border-radius: 20px; display: flex; justify-content: space-between; margin-bottom: 80px; padding: 10px 0; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); cursor: pointer;}
+.benefit .inner .top .benBox li .title {font-size: 32px; color: #00579E; font-weight: bold; padding: 40px 60px; line-height: 2;} 
+.benefit .inner .top .benBox li .title span {display: block; font-size: 20px; color: #000;  font-weight: normal;}
+.benefit .inner .top .benBox li .icon {margin-right: 20px;}
+.benefit .inner .top .benBox li .icon img {width: 100%;}
+.benefit .inner .bottom {margin: 0 auto; width: 80%; font-family: 'pretendard',sans-serif;position: relative;}
+.benefit .inner .bottom .subtxt {margin-bottom: 40px; font-weight: 600; text-align: left;}
+.benefit .inner .bottom ul {width: 100%;}
+.benefit .inner .bottom ul li {width: 100%; margin-bottom: 40px; }
+.benefit .inner .bottom .btn { display: block; width: 170px; margin: 100px auto 0; background: #00579E; color: #fff; font-size: 26px; font-weight: bold; border-radius: 100px; text-align: center; padding: 14px 20px;}
+.benefit .inner .bottom p {margin-top: -24px;}
+
+input[id="check1"] + label {position: absolute; left: -4%; top: 0;  display: inline-block; width: 20px; height: 20px;background: #EFEFEF; box-shadow: 0 0 3px rgba(0, 0, 0, 0.2); border-radius: 2px; cursor: pointer; position: relative; }
+input[id="check1"]:checked + label::after {content: '✔'; text-align: center; background: #8d8d8d;width: 20px; height: 20px; border-radius: 2px; cursor: pointer; position: absolute; left: 0;top: 0;}
+input[id="check1"] {display:none; }
+
+input[id="check2"] + label {position: absolute; left: -4%; top: 0px; display: inline-block; width: 20px; height: 20px;background: #EFEFEF; box-shadow: 0 0 3px rgba(0, 0, 0, 0.2); border-radius: 2px; cursor: pointer; position: relative; }
+input[id="check2"]:checked + label::after {content: '✔'; text-align: center; background: #8d8d8d;width: 20px; height: 20px; border-radius: 2px; cursor: pointer; position: absolute; left: 0;top: 0;}
+input[id="check2"] {display: none;}
+
+input[id="check3"] + label {position: absolute; left: -4%; top: 0px; display: inline-block; width: 20px; height: 20px;background: #EFEFEF; box-shadow: 0 0 3px rgba(0, 0, 0, 0.2); border-radius: 2px; cursor: pointer; position: relative; }
+input[id="check3"]:checked + label::after {content: '✔'; text-align: center; background: #8d8d8d;width: 20px; height: 20px; border-radius: 2px; cursor: pointer; position: absolute; left: 0;top: 0;}
+input[id="check3"] {display: none;}
+
+/* hover */
+.benefit .inner .top .benBox li:hover, .benefit .inner .top .benBox li:focus {background: #01B1EC; transition: all 0.8s;}
+.benefit .inner .top .benBox li:hover .title, .benefit .inner .top .benBox li:focus .title  {color: #fff;}
+/* ani */
+.benefit .inner.motion {animation: up 1s; transition: all 0.8s;} 
+@keyframes up {
+  0% {transform: translateY(700px);}
+}
+
+/* footer */
+footer {position: fixed; left: 0; bottom: 0; width: 100%; height: 400px; box-sizing: border-box; z-index: -1; background:#000;  color: #8D8D8D; padding: 40px 0; text-align: left;}
+footer .inner {width: 85%; margin: 0 auto; font-size: 14px; font-family: 'pretendard';}
+footer .top { width: 100%; padding: 16px 0; border-bottom:1px solid #555;}
+footer .top h2 {font-size: 1.2vw; color: #00579E; font-weight: 600;  text-align: left;}
+footer .bottom {display: flex; justify-content: space-between; padding: 20px 0;}
+footer .bottom .left {width: 50%;}
+footer .bottom .left h3 {font-size: 0.9vw; margin-bottom: 16px;}
+footer .bottom .left p {margin-bottom: 20px;}
+footer .bottom .left p span {color:#8D8D8D;}
+footer .bottom .contact p {display: inline-block; width: 317px; line-height: 2px; font-size: 0.8vw;}
+footer .bottom .right {width: 10%;}
+footer .bottom .right h3 {margin-bottom: 16px; font-size: 0.9vw;}
+footer .bottom .right a {display: block; font-size: 0.9vw; margin-bottom: 14px; transition: all 0.4s;}
+footer .bottom .right a p {display: inline-block; font-size: 0.9vw; margin-right: 5px;}
+footer .bottom .right a img {width: 12px; height: 12px; padding-bottom: 2px;}
+footer .bottom .right a:hover {color: #00579E; }
+footer .name span {color: #00579E; font-size: 0.9vw;}
+footer .name p {margin: 10px 0; font-size: 0.8vw;}

@@ -1,0 +1,871 @@
+@charset "utf-8";
+
+
+/* reset */
+* {margin: 0;padding: 0; box-sizing: border-box;}
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, tbody, tfoot, thead, tr, th, td{margin:0;padding:0;}
+a {color: inherit; text-decoration: inherit;}
+li {list-style: none;}
+address, em, i {font-style: normal;}
+button {background: none; border: none;}
+button:focus {outline:none;}
+a:focus {outline:none}
+img {vertical-align: middle;}
+
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans+KR:300,400,700&display=swap');
+@import url('https://github.com/webfontworld/gmarket.git');
+
+
+@font-face {
+  font-family: 'GmarketSans';
+  font-weight: 300;
+  font-style: normal;
+  src: url('https://cdn.jsdelivr.net/gh/webfontworld/gmarket/GmarketSansLight.eot');
+  src: url('https://cdn.jsdelivr.net/gh/webfontworld/gmarket/GmarketSansLight.eot?#iefix') format('embedded-opentype'),
+       url('https://cdn.jsdelivr.net/gh/webfontworld/gmarket/GmarketSansLight.woff2') format('woff2'),
+       url('https://cdn.jsdelivr.net/gh/webfontworld/gmarket/GmarketSansLight.woff') format('woff'),
+       url('https://cdn.jsdelivr.net/gh/webfontworld/gmarket/GmarketSansLight.ttf') format("truetype");
+  font-display: swap;
+}  
+@font-face {
+  font-family: 'GmarketSans';
+  font-weight: 500;
+  font-style: normal;
+  src: url('https://cdn.jsdelivr.net/gh/webfontworld/gmarket/GmarketSansMedium.eot');
+  src: url('https://cdn.jsdelivr.net/gh/webfontworld/gmarket/GmarketSansMedium.eot?#iefix') format('embedded-opentype'),
+       url('https://cdn.jsdelivr.net/gh/webfontworld/gmarket/GmarketSansMedium.woff2') format('woff2'),
+       url('https://cdn.jsdelivr.net/gh/webfontworld/gmarket/GmarketSansMedium.woff') format('woff'),
+       url('https://cdn.jsdelivr.net/gh/webfontworld/gmarket/GmarketSansMedium.ttf') format("truetype");
+  font-display: swap;
+} 
+@font-face {
+  font-family: 'GmarketSans';
+  font-weight: 700;
+  font-style: normal;
+  src: url('https://cdn.jsdelivr.net/gh/webfontworld/gmarket/GmarketSansBold.eot');
+  src: url('https://cdn.jsdelivr.net/gh/webfontworld/gmarket/GmarketSansBold.eot?#iefix') format('embedded-opentype'),
+       url('https://cdn.jsdelivr.net/gh/webfontworld/gmarket/GmarketSansBold.woff2') format('woff2'),
+       url('https://cdn.jsdelivr.net/gh/webfontworld/gmarket/GmarketSansBold.woff') format('woff'),
+       url('https://cdn.jsdelivr.net/gh/webfontworld/gmarket/GmarketSansBold.ttf') format("truetype");
+  font-display: swap;
+} 
+
+
+/* layout */
+body {font-family:'Gmarket Sans';}
+.wrap {margin: 0 auto; overflow: hidden; z-index: 1; position: relative;}
+.inner {width: 78%;}
+
+
+/* menuopen */
+.menuOpen .menuWrap {width: 0%; opacity: 0; height: 100vh; top: 0; right: 0; background: #efefef; position: fixed; z-index: 200;}
+.menuOpen .menuWrap ul {position: absolute; top: 50%; left: 25%; transform: translateY(-50%); font-size: 50px; color: #00579E;}
+.menuOpen .menuWrap ul li a {display: inline-block; margin-bottom: 20px; padding: 10px; transition: all 0.3s;}
+.menuOpen .menuWrap ul li a:hover, .menuOpen .menuWrap ul li a:focus { color: #01B1EC; border-bottom: 3px solid #01B1EC;}
+/* close */
+.menuOpen .menuWrap .close {position: absolute; top: 10%; right: 4%; transform: translateY(-50%); }
+/* open 열기 */
+.menuOpen button.open { position: fixed; z-index: 200; top: 5%; transform: translateY(-50%); right: 4%; cursor: pointer;} 
+.menuOpen .menuWrap.on {width: 100%; transition: all 0.8s; opacity: 1;}
+
+/* header */
+header {width: 100%; position: fixed; left: 0; top: 0; z-index: 100; font-family: 'Pretendard'; box-sizing: border-box;}
+.innerHeader {width: 100%; height: 90px; padding: 0 80px;  position: relative;}
+.innerHeader .logo {width: 140px; float: left; transition: all 0.4s; margin-top: 20px;}
+.innerHeader .logo a {display: block; width: 100%; height: 100%; position: relative;}
+.innerHeader .logo a img {position:absolute; top: 0; left: 0; transition: all 0.4s; width: 100%;}
+.innerHeader .logo a img:nth-child(2) {opacity: 0; top: 0; width: 30px;}
+header .gnbBg {position: absolute; left: 0; top: 0; height: 0; width: 100%; background: #fff; height: 0px; z-index: -1;}
+header .gnbBg.on {height: 300px;}
+/* header hover */
+header:hover {background: #fff; border-bottom: 1px solid #EFEFEF; transition: all 0.4s;}
+header.on {height: 90px; background: #fff; border-bottom: 1px solid #EFEFEF; transition: all 0.4s;}
+header.on .innerHeader .logo img:nth-child(1) {opacity: 0;}
+header.on .innerHeader .logo img:nth-child(2) {opacity: 1; left: 25%; top: 10px;}
+header.on .innerHeader form {opacity: 0;}
+/* nav */
+.innerHeader nav {position: relative; }
+.innerHeader nav .gnb {position: absolute; left: 46%; transform: translateX(-50%); width: 800px;}
+.innerHeader nav .gnb > li {float: left; position: relative; width: 20%; height: 90px; line-height: 90px; text-align: center; }
+.innerHeader nav .gnb > li > a {display: block; width: 100%; height: 100%; text-align: center; font-weight:normal; font-size: 18px; box-sizing: border-box;}
+.innerHeader nav .gnb > li > a::before {position: absolute; content: ''; width: 100%; height: 100%;  transition: all 0.3s; opacity: 0; left: 0;top: 0; z-index: -1; background:rgba(218, 242, 254, 0.5);}
+/* nav hover */
+.innerHeader nav .gnb > li:hover > a::before, .innerHeader nav .gnb > li:focus > a::before {opacity: 1; top: 0;}
+.innerHeader nav .gnb > li:hover {color: #00579E;}
+/* lnb */
+.gnb li ul.lnb {position: absolute; width: 100%; transition: all 0.4s; box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);  box-sizing: border-box; background: #fff; opacity: 0; padding: 0; line-height: 0px; color: #000;}
+.gnb li ul.lnb.on {opacity: 1; height: 200px; line-height: 50px;}
+.gnb li ul.lnb li {box-sizing: border-box;}
+.gnb li ul.lnb li a {display: block; width: 100%; height: 100%;}
+.gnb li ul.lnb li a span {display: block; position: relative; }
+.gnb li ul.lnb li a span::after {content: ''; width: 0%; height: 1px; background: #01B1EC; position: absolute; left: 0; bottom: 0px; transition: all 0.3s;}
+.gnb li ul.lnb li a:hover span::after, .gnb li ul.lnb li a:focus span::after {width: 100%;}
+.gnb li ul.lnb li a:hover {color: #01B1EC;}
+/* form */
+.innerHeader form {display: inline-block; border: none; position: absolute; top:0; right: 10%; margin-top: 32px;}
+.innerHeader form input[type=text1] { width: 20vw; height:30px; margin-left: 16px; border:1px solid #efefef; border-radius:15px; width:220px; height: 30px; background:#fff; position: relative;}
+.innerHeader form input[type=submit1] {width: 28px; height: 28px; border: none; border-radius: 100px; background:url(../img/searchicon.png) no-repeat center; position: absolute; right:4%; top: 0; }
+
+
+/* contents Inner */
+.contentsInner {background: #fff; margin-bottom: 400px;}
+/* section visual */
+.visual {position: relative; overflow: hidden;}
+.visual .slide {position: relative; width: 100%;  z-index: 2; }
+.visual .slide li {position: relative; width: 100%; height: 100vh; overflow: hidden;}
+.visual .slide li .bg {position: absolute; width: 100%; box-sizing: border-box;}
+.visual .slide li .bg img {width: 100%;}
+.visual .slide li .imgBox {float: right; width: 60%; height: 100vh; position: relative;}
+.visual .slide li .imgBox p {position: absolute;}
+.visual .slide li .imgBox .object {right: 30%; top: 30%;}
+.visual .slide li .imgBox .bye {right: 20%; top: 18%; }
+.visual .slide li .imgBox .deco1 {position: absolute; bottom: 10%; left: 34%;  animation: rotateAni 4s linear infinite;}
+.visual .slide li .imgBox .deco2 {position: absolute; bottom: 27%; left: -10%;animation: rotateAni 5s linear infinite;}
+.visual .slide li .txtBox { width: 33%; position: absolute; left: 14%; top: 30%;}
+.visual .slide li .txtBox .top {font-size: 2vw; color: #01B1EC;}
+.visual .slide li .txtBox h2 {font-size: 4vw; margin: 18px 0; font-weight:bold;}
+.visual .slide li .txtBox h2 .mo {display: inline-block; transition: all 0.1s; transform: rotate(10deg);}
+.visual .slide li .txtBox h2 span {color: #00579E;}
+.visual .slide li .txtBox .btn {font-weight: 600;}
+.visual .slide li .txtBox .bottom {font-size: 1.4vw;}
+.visual .slide li .btn {display: inline-block; background: #01B1EC; font-size: 1.2vw; color: #fff; padding: 20px; border-radius: 50px; margin: 69px 0;  text-align: center;}
+.visual .arrow {position: absolute; top: 0; left: 0; z-index: 1;}
+/* slide2 */
+.visual .slide li .imgBox .object2 {position: absolute; right: 0; bottom: 0;}
+.visual .slide li .imgBox .bal1 {position: absolute; left: 0; bottom: 30%; z-index: 2;}
+.visual .slide li .imgBox .bal2 {position: absolute; left: 15%; bottom: 15%; z-index: 2;}
+.visual .slide li .imgBox form {position: absolute; bottom: 50%; left: 20%; z-index: 3;}
+.visual .slide li .imgBox input {width: 26vw; background: #fff; border-radius: 50px; border: 2px solid #EFEFEF; font-size:1.4vw; padding:20px 30px; position: relative;}
+.visual .slide li .imgBox .enter {width: 60px; height: 60px;  border-radius: 100px; background: url(../img/con1-2entericon.png); border: none; padding: 0; position: absolute; right: 3%; top: 8%; }
+.visual .slide li:nth-child(2) .txtBox .btn {color: #fff; background: #00579E;}
+/* slide3 */
+.visual .slide li .imgBox .coupon1 {position: absolute; bottom: 40%; left: 30%; z-index: 10;}
+.visual .slide li .imgBox .coupon2 {position: absolute; bottom: 28%; left: 40%; z-index: 8;}
+.visual .slide li .imgBox .cou3 {position: absolute; bottom: 14%; left: 30%;}
+.visual .slide li:nth-child(3) .txBoxt h2 span {color: #B2E6FF;}
+.visual .slide li:nth-child(3) .txtBox h2 {color: #fff;}
+.visual .slide li:nth-child(3) .bottomtxt {color: #B2E6FF;}
+.visual .slide li:nth-child(3) .txtBox .btn {color: #000; background: #B2E6FF;}
+
+/* arrow */
+.slick-arrow {position: absolute; right: 2%; bottom: 50%; width: 60px; height: 60px; line-height: 60px; z-index: 20; text-indent: -99999px; border: none; padding: 10px;}
+.slick-arrow::after {content: ''; position: absolute; width: 100%; height: 100%; left: 0; top: 0; transition: all 0.2s; }
+.slick-arrow.slick-prev {top: 40%; left: 2%;}
+.slick-arrow.slick-prev::after { background: url(../img/arrow\ icon-1.png) no-repeat center; color: #00579E;}
+.slick-arrow.slick-next {top: 40%; right: 2%;}
+.slick-arrow.slick-next:after { background: url(../img/arrow\ icon.png) no-repeat center; color: #00579E;}
+/* dots */
+.visual .slide .slick-dots {position: absolute; bottom: 12%; left: 17%; transform: translateX(-50%); z-index: 20; display: flex;}
+.visual .slide .slick-dots li {margin: 0 10px; width: 10px; height: 10px; background: rgba(0, 0, 0, 0.2);; text-indent: -9999px; border-radius: 100px; }
+.visual .slide .slick-dots li.slick-active {background: #B0CA34; transition: all 0.3s;}
+
+/* animation */
+/* slide 공통 애니메이션 */
+.slick-active .bg {animation-name: bg; animation-duration: 1.9s;}
+@keyframes bg {
+  0% {opacity: 0; transform: scale(1.25);}
+  100% {opacity: 1;}
+}
+.slick-active .txtBox h2 {animation: title1 1s; transition: all 0.8s;}
+@keyframes title1 {
+  0% {opacity: 0; transform: translateY(-50px) }
+  20% {opacity: 0; transform: translateY(-50px) }
+}
+.slick-active .txtBox .top {animation: txt1 1.2s; transition: all 0.8s;}
+@keyframes txt1 {
+  0% {opacity: 0; transform: translateX(-150px) }
+  20% {opacity: 0; transform: translateX(-150px) }
+}
+.slick-active .txtBox .bottom {animation: txt2 1.6s; transition: opacity 1s;}
+@keyframes txt2 {
+  0% {opacity: 0; }
+  40% {opacity: 0;}
+  100% {opacity: 1; }
+}
+
+/* slide1 */
+.slick-active .mo {animation-name: mo; animation-duration: 1s;}
+@keyframes mo {
+  0% { transform: translateY(-50px);}
+  100% {transform: translateY(0px);}
+}
+/* bye 사라지는건 어떻게? */
+.slick-active .bye {animation: bye1 3s infinite;}
+@keyframes bye1 {
+  0% {opacity: 1;}
+  50% {opacity: 1;}
+  100% {opacity: 0; transform:scale(3s);}
+}
+.slick-active .object {animation: imgAni 1s;}
+@keyframes imgAni {
+  0% {transform: translateY(100px);}
+  100% {transform: translateY(0);}
+}
+/* slide2 */
+.slick-active .object2 {animation: imgAni2 1s;}
+@keyframes imgAni2 {
+  0% {transform: translate(1000px,1000px);}
+  100% {transform: translateY(0);}
+}
+/* slide3 */
+.slick-active .coupon1 {animation-name: cou1; animation-duration: 1.6s;}
+@keyframes cou1 {
+  0% {transform: translateY(-300px);}
+  100% {transform: translateY(0px);}
+}
+.slick-active .coupon2 {animation-name: cou1; animation-duration: 1.2s;}
+@keyframes cou1 {
+  0% {transform: translateY(-300px);}
+  100% {transform: translateY(0px);}
+}
+.slick-active .cou3 {animation-name: cou1; animation-duration: 0.8s;}
+@keyframes cou1 {
+  0% {transform: translateY(-300px);}
+  100% {transform: translateY(0px);}
+}
+
+
+
+/* section content */
+.content {background: url(../img/con2\ bg.png) no-repeat ; width: 100%;}
+.content .inner {width: 100%; text-align: center; margin:180px 0px; padding-bottom: 30px;}
+.content .inner .title {font-size: 3vw; color:#01B1EC; margin-bottom: 50px;}
+.content .inner .img {width: 100%; }
+.content .inner video {width: 1088px; height: 616px;}
+.content .inner .txt {width: 800px; margin: 38px auto 6px;}
+.content .inner .txt .sub {font-size: 1.6vw; margin-bottom: 20px; color: #000; animation: title1 1s;}
+.content .inner .txt .sub .green {color: #B0CA34;}
+.content .inner p {font-size: 1.2vw; color: #00579E;}
+
+/* animation */
+/* 공통애니 */
+.inner h2.motion .char {display: inline-block; animation: slide-up 1s cubic-bezier(.10, 0, .10, 1) both;
+  animation-delay: calc(60ms * var(--char-index));}
+
+@keyframes slide-up {
+  0% {opacity: 0; }
+  30% {opacity: 0; }
+}
+.inner .txt p.motion .char {display: inline-block; animation: slide-up2 1s cubic-bezier(.10, 0, .10, 1) both;
+  animation-delay: calc(60ms * var(--char-index)); }
+  @keyframes slide-up2 {
+    0% {opacity: 1;color:  #B0CA34;}
+    100% {opacity: 1; }
+  }
+
+
+
+/* section good */
+.good {width: 100%;}
+.good .inner {text-align: center; position: relative; margin: 0 auto; padding: 110px 0 180px; }
+.good .inner h2 {font-size: 3vw; font-weight: bold;  margin-bottom: 60px; color: #00579E;}
+.good .inner ul {display: flex; justify-content: space-between; transition: all 0.8s;}
+.good .inner ul li {width: 32%; padding: 65px 20px; 
+  border-radius: 40px; position: relative; transition: all 0.8s;}
+.good .inner ul li span {position: absolute; left: 20%;}
+.good .inner ul li span img {width: 1.4vw;}
+.good .inner ul li h3 {font-size: 1.6vw; font-weight: normal; padding-bottom: 30px;}
+.good .inner ul li p {font-size: 1.2vw; font-weight: 200; color: #8D8D8D; padding-bottom: 50px;}
+.good .inner ul li img {width: 100%; }
+.good .inner a {display: block; position: absolute; right: 0; top: 14%;}
+
+/* hover */
+.good .inner ul li:hover, .good .inner ul li:focus {transform: scale(1.1);}
+.good .inner ul li:hover span, .good .inner ul li:focus span {animation: rotateAni 2s;}
+
+/* ani */
+.good .inner ul.motion {animation:ul 1.4s; }
+@keyframes ul {
+  0% {opacity: 0; transform: translateX(-1000px) }
+  20% {opacity: 0; transform: translateX(-1000px) }
+}
+
+
+
+/* section story */
+.story {width: 100%; background: #EFEFEF; position: relative;}
+.story .inner { margin: 0 auto; padding: 223px 0 300px; display: flex; justify-content: space-between;}
+.story .inner .left {width: 40%;}
+.story .inner .left h2 {font-size: 3vw; color: #00579E; margin-bottom: 140px;}
+.story .inner .left .txtBox .title {font-size: 1.6vw; color: #000; font-weight: 400; margin-bottom: 20px;}
+.story .inner .left .txtBox p {font-size: 1.2vw; color: #8D8D8D; font-weight: lighter; margin-bottom: 10px; line-height: 28px;}
+.story .inner .left .txtBox .subtitle {font-size: 2vw; color: #00579E; font-weight: bold; line-height:1.3; padding-top: 10px;}
+.story .inner .left .txtBox a {display: block; font-size:1vw; margin: 98px 0; font-family: 'pretendard';}
+.story .inner .left .txtBox span {font-size: 0.8vw; font-weight: bold; color: #8D8D8D; margin-top: 4px;}
+/* swiper */
+.story .inner .right {position: relative; width: 60%; }
+.story .inner .right .meSwiper { width: 100%; position: absolute; right: 0;top: 0;}
+.story .inner .right .meSwiper .swiper-wrapper {transition-timing-function: linear;}
+.story .inner .right .meSwiper .swiper-slide {width: 100%; transform: scale(0.8); transition: all 0.8s;}
+.story .inner .right .meSwiper .swiper-slide img {width: 100%; transition: all 0.8s;} 
+.story .inner .swiper-button-prev {position: absolute; left: 11%; margin-top: 14%;} 
+.story .inner .swiper-button-prev::after {content: '';background: url(../img/con4-arrow.png) no-repeat; width: 62px; height: 62px; position: absolute; left: 11%; bottom: 0px;} 
+.story .inner .swiper-button-next {position: absolute; left: 15%; margin-top: 14%;} 
+.story .inner .swiper-button-next::after {content: '';background: url(../img/con40arrow2.png) no-repeat; width: 62px; height: 62px; position: absolute; left: 11%; bottom: 0px;}
+
+/* hover */
+.story .inner .swiper-slide:hover img {transform: scale(1.05); box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); border-radius: 50px;}
+
+/* ani */
+.story .inner.motion .left {animation: ul 1.4s;}
+.story .inner.motion .txtBox {animation: ul 1.6s;}
+.story .inner.motion .swiper-button-next {animation: ul 1.6s;}
+.story .inner.motion .swiper-button-prev {animation: ul 1.6s;}
+
+.story .inner.motion .right {animation: ul2 2s;}
+@keyframes ul2 {
+  0% {opacity: 0; transform: translateX(1000px) }
+  20% {opacity: 0; transform: translateX(1000px) }
+}
+
+
+
+
+
+/* membership */
+.membership {width: 100%; background: url(../img/con5\ bg.png) no-repeat center/cover;}
+.membership .inner { margin: 0 auto; padding: 200px 0 300px;}
+.membership .inner .top {text-align: center; margin-bottom: 200px;}
+.membership .inner .top .memeberLogo {display: block; margin: 0 auto 40px;}
+.membership .inner .top h2 {font-size: 3vw; color: #fff; margin-bottom: 68px; -webkit-text-stroke: 1px #00579E;}
+.membership .inner .top p {font-size: 1.2vw; color:#EFEFEF; font-weight: regular ; line-height: 38px; margin-bottom: 10px;}
+.membership .inner .top p span {color: #00579E;}
+
+.membership .inner .bottom {position: relative; }
+.membership .inner .bottom ul {display: flex; justify-content: space-between;}
+.membership .inner .bottom ul li {width: 30%; height: 189px; background: #00579E; text-align: center; padding: 30px 30px; border-radius: 40px; color: #fff;}
+.membership .inner .bottom ul li p {font-size: 1vw; font-weight: lighter; margin: 14px 0; line-height: 26px;}
+.membership .inner .bottom ul li .subtxt {font-size: 1.2vw; font-weight: 400; padding-bottom: 10px; margin-top: 24px; color: #FBD154;}
+.membership .inner .bottom ul li .searchBox {width: 100%; position: relative;}
+.membership .inner .bottom ul li .txt {display: inline-block; font-size: 1.2vw; color: #000; padding: 20px 50px 16px; border-radius: 80px; border: 4px solid #B0CA34; background: #fff;}
+.membership .inner .bottom ul li .searchicon {display: inline-block; position: absolute; bottom: 33%; right: 10%;}
+.membership .inner .bottom .earth {position: absolute; left: 50%; top:-70%; width: 22vw; transform: translateX(-50%);}
+.membership .inner .bottom .earth img {width: 100%; }
+.membership .inner .bottom .line {position: absolute; transform: translateX(-50%); left: 50%; bottom: 50%; z-index: -1; }
+.membership .inner .bottom .line img {width: 100%;}
+
+/* animation */
+.membership .inner .top.motion .memeberLogo {animation: title1 1s;}
+.membership .inner .top.motion h2 {animation: title1 1s;}
+.membership .inner .top.motion p {animation: txt2 1s;}
+.membership .inner .bottom .earth {z-index: 2;}
+.membership .inner .bottom .earth img {animation: rotateAni 10s linear infinite;}
+.membership .inner .bottom .line {z-index: 1;}
+
+
+@keyframes rotateAni {
+  100% {transform: rotate(360deg);}
+}
+
+/* filterHow */
+.filterHow {width: 100%;}
+.filterHow .inner {margin: 0 auto; padding: 144px 0 120px; text-align: center; position: relative;}
+.filterHow .inner h2 {font-size: 2vw; color: #00579E; margin-bottom: 53px;}
+.filterHow .inner .filter {width: 100%; margin: 0px auto; display: flex; justify-content: space-between; padding-left: 20px;}
+.filterHow .inner .filter li { width: 32%; margin: 40px; position: relative; z-index: 2; }
+.filterHow .inner .filter li h3 {font-size: 1.6vw; color: #00579E; margin: 22px 0 12px;}
+.filterHow .inner .filter li p {font-size: 1.2vw;  color: #246046; line-height: 24px; }
+.filterHow .inner .bg {position: absolute; left: 50%; top: 23%; transform: translateX(-50%);}
+.filterHow .inner .btn {display: block; font-size: 22px; width: 257px; color: #fff; background: #246046; margin: 100px auto; padding: 20px 30px; border-radius: 80px;}
+.filterHow .inner .btxt {text-align: right;}
+.filterHow .inner .btxt p {display: inline-block; margin-left: 8px;}
+
+/* animation */
+.filterHow .inner .filter li:hover .car, .filterHow .inner .filter li:focus .car {animation-name: run; animation-duration: 1.4s;}
+@keyframes run {
+  0% {transform: translateX(-150px);}
+  100% {transform: translateX(0px);}
+}
+.filterHow .inner .filter li:hover .off, .filterHow .inner .filter li:focus .off {animation-name: circle; animation-duration: 1s;}
+
+.filterHow .inner .circle:hover, .filterHow .inner .circle:focus {animation-name: circle; animation-duration: 1s;}
+@keyframes circle {
+  0% {opacity: 0; }
+  100% {opacity: 1; transform: scale(1.1);}
+}
+
+/* question */
+.question {background: #DAF2FE;}
+.question .inner {width: 74%; margin: 0 auto; padding: 160px 0 180px;}
+.question .top {display: flex; justify-content: space-between; padding: 100px 30px;}
+.question .top .FAQtxt {width: 38%;}
+.question .top .FAQtxt h2 {font-size: 2vw; margin-bottom: 80px; }
+.question .top .FAQtxt p {display: inline-block; font-size: 1.2vw; color: #00579E;}
+.question .top .FAQtxt span {font-size: 1vw; color: #00579E; font-weight: bold;}
+.question .top .FAQbox {width: 50%; position: relative;}
+.question .top .FAQbox .mySwiper {width: 100%; height: 100%;}
+.question .top .FAQbox .mySwiper .swiper-wrapper {text-align: center; padding-bottom: 20px; box-sizing: border-box;}
+.question .top .FAQbox .mySwiper .swiper-wrapper .swiper-slide {background: #01B1EC; width:100%; height: 100%;  border-radius: 20px; padding:50px 0 20px; cursor: pointer;}
+.question .top .FAQbox .mySwiper .swiper-wrapper .swiper-slide span {font-size: 4vw; font-weight: bold; color: #fff;}
+.question .top .FAQbox .mySwiper .swiper-wrapper .swiper-slide p {width: 100%; font-size: 0.9vw; margin: 20px auto; line-height: 1.2; color: #fff; padding: 0 24px;}
+.question .top .FAQbox .swiper-button-prev {position: absolute; left: -10%; color: #00579E;}
+.question .top .FAQbox .swiper-button-next {position: absolute; right: -10%; color: #00579E;}
+.question .swiper-pagination {transform: translateY(40px);}
+.question .bottom { display: flex; justify-content: space-between; }
+.question .bottom li {background: #fff; width: 49%; margin: 40px 0; padding: 50px 60px; border-radius: 20px; position: relative;}
+.question .bottom li h2 {margin:16px 0; font-size: 1.4vw; font-weight:400;}
+.question .bottom li p {font-size: 1.2vw; font-weight: 300; color: #8D8D8D; margin-bottom: 60px;}
+.question .bottom li span {font-size: 100px; font-weight: bold; position: absolute; right: 8%; top: 30%; color: #8D8D8D;}
+.question .bottom li a {display: inline-block; background: #00579E; color: #fff; font-size: 1vw; font-weight: 500; text-align: center; padding:15px; border-radius: 100px;}
+
+/* hover */
+.question .top .FAQbox .mySwiper .swiper-wrapper .swiper-slide:hover,
+.question .top .FAQbox .mySwiper .swiper-wrapper .swiper-slide:focus {background: #00579E; transition: all 0.8s;}
+.question .bottom li:hover, .question .bottom li:focus {background: #00579E; color: #fff; transition:all 0.6s; transform: scale(1.01);}
+.question .bottom li:hover span, .question .bottom li:focus span {color: #01B1EC; transition:all 0.6s; }
+.question .bottom li:hover a, .question .bottom li:focus a {background: #fff; color: #01B1EC; transition:all 0.6s; }
+/* ani */
+.question .top.motion .FAQtxt {animation: ul 1.4s;}
+.question .top.motion .FAQbox {animation: ul2 1.4s;}
+.question .bottom.motion {animation: up 0.8s; transition: all 0.8s;} 
+@keyframes up {
+  0% {transform: translateY(400px);}
+}
+
+
+/* footer */
+footer {position: fixed; left: 0; bottom: 0; width: 100%; height: 400px; box-sizing: border-box; z-index: -1; background:#000;  color: #8D8D8D; padding: 40px 0;}
+footer .inner {width: 85%; margin: 0 auto; font-size: 14px; font-family: 'pretendard';}
+footer .top { width: 100%; padding: 16px 0; border-bottom:1px solid #555;}
+footer .top h2 {font-size: 1.2vw; color: #00579E; font-weight: 600;}
+footer .bottom {display: flex; justify-content: space-between; padding: 20px 0;}
+footer .bottom .left {width: 50%;}
+footer .bottom .left h3 {font-size: 0.9vw; margin-bottom: 16px;}
+footer .bottom .left p {margin-bottom: 20px;}
+footer .bottom .left p span {color:#8D8D8D;}
+footer .bottom .contact p {display: inline-block; width: 317px; line-height: 2px; font-size: 0.8vw;}
+footer .bottom .right {width: 10%;}
+footer .bottom .right h3 {margin-bottom: 16px; font-size: 0.9vw;}
+footer .bottom .right a {display: block; font-size: 0.9vw; margin-bottom: 14px; transition: all 0.4s;}
+footer .bottom .right a p {display: inline-block; font-size: 0.9vw; margin-right: 5px;}
+footer .bottom .right a img {width: 12px; height: 12px; padding-bottom: 2px;}
+footer .bottom .right a:hover {color: #00579E; }
+footer .name span {color: #00579E; font-size: 0.9vw;}
+footer .name p {margin: 10px 0; font-size: 0.8vw;}
+
+
+
+
+
+
+/* 반응형 */
+/* 1600px이하 */
+@media screen and (max-width:1600px){
+  .content {background: none;}
+  .membership .inner .bottom .earth {top: -54%;}
+  .membership .inner .bottom .line img {width: 90%;}
+  .membership .inner .bottom ul li .searchicon {right: 8%;}
+}
+
+/* 1480px이하 */
+@media screen and (max-width:1480px){
+  .inner {width: 88%;}
+  .innerHeader form {right: 0%;}
+
+  /* slide1 */
+  .visual .slide li .imgBox .object {right: 20%; top: 20%;}
+  .visual .slide li .imgBox .bye { top: 11%;}
+  .visual .slide li .imgBox .bye img {width: 80%;}
+  .visual .slide li .imgBox .deco1 {bottom: 18%;}
+  .visual .slide li .imgBox .deco2 {bottom: 35%; }
+  /* slide2 */
+  .visual .slide li .imgBox .object2 img {width: 80%;}
+  .visual .slide li .imgBox .object2 {right: -26%; top: 10%;}
+  .visual .slide li .imgBox .bal1 {bottom: 30%;}
+  .visual .slide li .imgBox .bal2 {bottom: 20%; left: 30%;}
+  /* slide3 */
+  .visual .slide li .imgBox .coupon1 {top: 18%;}
+  .visual .slide li .imgBox .coupon1 img {width: 80%;}
+  .visual .slide li .imgBox .coupon2 {top: 30%;}
+  .visual .slide li .imgBox .coupon2 img {width: 80%;}
+  .visual .slide li .imgBox .cou3 {top: 42%;}
+  .visual .slide li .imgBox .cou3 img {width: 80%;}
+  /* dot */
+  .visual .slide .slick-dots {bottom: 20%;}
+
+ /* story */
+ .story .inner {padding: 223px 0;}
+ .story .inner .swiper-button-prev {left: 5%; margin-top: 18%;} 
+ .story .inner .swiper-button-next {left: 10%; margin-top: 18%;} 
+  /* membership */
+  .membership .inner .bottom .earth {top: -50%;}
+  .membership .inner .bottom .line img {width: 90%;}
+  .membership .inner .bottom ul li .searchicon {right: 11%;}
+  /* filterHow */
+  .filterHow .inner .filter {padding-top: 32px; padding-left: 20px;}
+  /* question */
+  .question .top {padding: 100px 0;}
+  .question .top .FAQtxt h2 {font-size: 36px;}
+  .question .top .FAQtxt p {font-size: 18px;}
+  .question .top .FAQbox {width: 55%;}
+  .question .top .FAQbox .mySwiper .swiper-wrapper .swiper-slide {padding: 30px 0 0px;}
+  .question .top .FAQbox .mySwiper .swiper-wrapper .swiper-slide p {padding: 15px 10px;}
+  .question .bottom li span {font-size: 6vw;}
+  
+  /* footer */
+  footer .bottom .left {width: 70%;}
+}
+
+/* 1280px이하 */
+@media screen and (max-width:1280px){
+  .visual .slide li .imgBox .object img {width: 90%;}
+  .visual .slide li .imgBox .deco1 {bottom: 26%; left: 30%;}
+  .visual .slide li .imgBox .deco1 img {width: 80%;}
+  .visual .slide li .imgBox .deco2 {bottom: 40%; left: 5%;}
+  .visual .slide li .imgBox .deco2 img {width: 80%;}
+
+    /* dot */
+    .visual .slide .slick-dots {bottom: 24%;}
+    .membership .inner .bottom .earth {top: -31%;}
+    .membership .inner .top.motion p {line-height: 1.4;}
+    .membership .inner .top {margin-bottom: 130px;}
+
+}
+/* 1100px이하 */
+@media screen and (max-width:1100px){
+  .inner {width: 88%;}
+  .innerHeader form {display: none;}
+  .innerHeader .gnb {display: none;}
+  .innerHeader .menuOpen {display: block; position: absolute; right: 5%; top: 27%; font-size: 26px; padding: 5px;}
+  .innerHeader .logo a img {width: 80%;}
+  header.on .innerHeader .logo img:nth-child(2) {left: 0%;}
+  .contentsInner { margin-bottom: 300px;}
+
+  /* slide1 */
+  .visual .slide li {height:68vh;}
+  .visual .slide li .imgBox .object {right: -5%; top: 20%;}
+  .visual .slide li .imgBox .object img {width: 70%;}
+  .visual .slide li .imgBox .bye {right: 0%; top: 14%;}
+  .visual .slide li .imgBox .bye img {width: 60%;}
+  .visual .slide li .imgBox .deco1 {bottom: 40%; left: 30%; animation: none;}
+  .visual .slide li .imgBox .deco1 img {width: 50%;}
+  .visual .slide li .imgBox .deco2 {bottom: 50%; left: 10%; animation: none;}
+  .visual .slide li .imgBox .deco2 img {width: 50%;}
+  .visual .slide li .btn {padding: 14px;}
+  /* slide2 */
+  .visual .slide li .imgBox .object2 {right: -34%; top: 5%;}
+  .visual .slide li .imgBox .bal1 {bottom: 55%; left: 20%;}
+  .visual .slide li .imgBox .bal1 img {width: 70%;}
+  .visual .slide li .imgBox .bal2 {bottom: 45%;left: 40%;}
+  .visual .slide li .imgBox .bal2 img {width: 70%;}
+  .visual .slide li .imgBox form {display: none;}
+  /* slide3 */
+  .visual .slide li .imgBox .coupon1 img {width: 50%;}
+  .visual .slide li .imgBox .coupon2 {top: 26%;}
+  .visual .slide li .imgBox .coupon2 img {width: 50%;}
+  .visual .slide li .imgBox .cou3 {top: 34%;}
+  .visual .slide li .imgBox .cou3 img {width: 50%;}
+  /* dot */
+  .visual .slide .slick-dots {bottom: 10%;}
+
+
+  /* content */
+  .content .inner video {width: 100%;}
+  .content .inner .txt .sub {font-size: 2.2vw;}
+  .content .inner p {font-size: 1.6vw;}
+
+  /* good */
+  .good .inner ul li {padding: 0;}
+  .good .inner ul li h3 {padding-bottom: 20px;}
+  .good .inner ul li p {padding-bottom: 30px;}
+
+  /* story */
+  .story .inner {padding: 180px 0px;}
+  .story .inner .left h2 {margin-bottom: 95px;}
+  .story .inner .left .txtBox p {line-height: 1.4;}
+  .story .inner .left .txtBox a {margin: 78px 0;}
+  .story .inner .swiper-button-prev {bottom:45%; left: 6%;}
+  .story .inner .swiper-button-next {bottom:45%; left: 13%;}
+
+  /* membership */
+  .membership .inner .top {margin-bottom: 130px;}
+  .membership .inner .top.motion h2 {font-size: 3vw; margin-bottom: 52px;}
+  .membership .inner .top p {font-size: 1.8vw; line-height: 1.4;}
+  .membership .inner .bottom ul li {height: 16vh; padding: 10px 12px;}
+  .membership .inner .bottom ul li p {font-size: 1.2vw; line-height: 1.4; }
+  .membership .inner .bottom ul li .subtxt {font-size: 1.6vw;}
+  .membership .inner .bottom ul li .txt {padding: 10px 50px; margin-top: 14px;}
+  .membership .inner .bottom ul li .searchicon {bottom: 20%;}
+  .membership .inner .bottom .earth {top: -40%;}
+  
+  /* filterHow */
+  .filterHow .inner h2 {font-size: 3vw;}
+  .filterHow .inner .filter {padding-top: 53px; padding-left: 13px;}
+  .filterHow .inner .circle img {width: 90%;}
+  .filterHow .inner .btn {font-size: 1.6vw;}
+
+  /* question */
+  .question .inner {width: 88%;}
+  .question .top .FAQtxt {width: 40%;}
+  .question .top .FAQbox .mySwiper .swiper-wrapper .swiper-slide p {padding: 0 10px; font-size: 1.2vw;}
+  .question .top .FAQbox .swiper-button-prev {left: -7%;}
+  .question .top .FAQbox .swiper-button-next {right: -8%;}
+  .question .bottom li h2 {font-size: 2vw;}
+  .question .bottom li p {margin-bottom: 40px;}
+  .question .bottom li a {font-size: 1.2vw;}
+
+  /* footer */
+  footer {height: 300px;}
+  footer .top {padding: 0 0 20px;}
+  footer .top h2 {font-size: 1.6vw;}
+  footer .bottom .left h3, footer .bottom .right h3, footer .bottom .name span{font-size: 1.2vw;}
+  footer .bottom .contact p, footer .bottom .right a p {font-size: 1vw;}
+  footer .bottom .left {width: 80%;}
+}
+
+/* 1024px이하 */
+@media screen and (max-width:1024px){
+  .good .inner ul li h3 {font-size: 2vw;}
+  .filterHow .inner .filter li h3 {font-size: 2vw;}
+  .question .top .FAQtxt h2 {font-size: 3vw;}
+}
+
+/* 834px이하 */
+@media screen and (max-width:834px){
+  .innerHeader {height: 60px;}
+  .innerHeader .menuOpen {top: 15%;}
+  .innerHeader .logo {margin-top: 8px;}
+  header.on {height: 60px;}
+  /* slide1 */
+  .visual .slide li {height: 50vh;}
+  .visual .slide li .imgBox .object {right: -22%;top: 10%;}
+  .visual .slide li .imgBox .bye {display: none;}
+  .visual .slide li .imgBox .deco1 {display: none;}
+  .visual .slide li .imgBox .deco2 {display: none;}
+  /* slide2 */
+  .visual .slide li .imgBox .bal1 {bottom: 70%; left: 20%;}
+  .visual .slide li .imgBox .bal1 img {width: 60%;}
+  .visual .slide li .imgBox .bal2 {bottom: 60%;left: 40%;}
+  .visual .slide li .imgBox .bal2 img {width: 60%;}
+    /* slide3 */
+    .visual .slide li .imgBox .coupon1 {top: 12%;}
+    .visual .slide li .imgBox .coupon2 {top: 20%;}
+    .visual .slide li .imgBox .cou3 {top: 28%;}
+    /* dot */
+    .visual .slide .slick-dots {bottom: 10%; left: 18%;}
+    .visual .slide .slick-dots li {width: 6px; height: 6px;}
+    .slick-arrow {width: 30px; height: 30px;}
+
+
+    /* content */
+    .content .inner {margin: 80px 0;}
+    .content .inner video {height: 460px;}
+    /* good */
+    .good .inner {padding: 50px 0 120px;}
+    .good .inner ul li span {left: 10%;}
+    .good .inner ul li p {font-size: 1.6vw;}
+
+    /* story */
+    .story .inner .left .txtBox .title {font-size: 2vw;}
+    .story .inner .swiper-button-prev {bottom:45%; left: 6%;}
+    .story .inner .swiper-button-next {bottom:45%; left: 13%;}
+    .story .inner .swiper-button-next::after {display: none;}
+    .story .inner .swiper-button-prev::after {display: none;}
+    /* .slick-arrow {text-indent: 9999;} */
+    /* .story .inner .swiper-button-next::after {content: '>'; width: 2px; height: 2px; color: #999; background: none; position: absolute; left: 11%; bottom: 0px;}
+    .story .inner .swiper-button-prev::after {content: '<';width: 2px; height: 2px; color: #999; background: none; position: absolute; left: 11%; bottom: 0px;}  */
+
+    /* member */
+    .membership .inner {padding: 116px 0 152px;}
+    .membership .inner .top.motion h2 {font-size: 4vw;}
+    .membership .inner .bottom ul li .subtxt {display: none;}
+    .membership .inner .bottom ul li .searchBox {display: none;}
+    .membership .inner .bottom ul li {height: 10vh; padding: 20px 25px; width: 40%; border-radius: 20px;}
+    .membership .inner .bottom ul li p {font-size: 1.6vw; line-height: 1.4; margin-top: 10px;}
+    .membership .inner .bottom .line {display: none;}
+
+    /* filter */
+
+    .filterHow .inner .circle {display: none;}
+    .filterHow .inner .filter li {margin: 30px;}
+    .filterHow .inner .filter li h3 {font-size: 2vw;}
+    .filterHow .inner .filter li p {font-size: 1.6vw; line-height:1.2;}
+    .filterHow .inner .btxt {text-align: center;}
+    /* question */
+    .question .inner {padding:100px 0 60px;}
+    .question .top .FAQbox .swiper-button-next {display: none;}
+    .question .top .FAQbox .swiper-button-prev {display: none;}
+    .question .bottom li {padding: 40px 25px;}
+    /* footer */
+    footer .bottom .left {width: 90%;}
+    footer .bottom .contact p {width: 300px;}
+}
+
+/* 678px이하 */
+@media screen and (max-width:678px){
+  .contentsInner {margin-bottom: 400px;}
+  .visual .slide li .bg {height: 80%;}
+  .visual .slide li .imgBox .object { right:-15%; width: 95%;}
+  .visual .slide li .imgBox .bal1 {width: 60%; bottom: 74%; left: 34%;}
+  .visual .slide li .imgBox .bal2 {bottom: 69%; left: 50%;}
+  .visual .slide li .imgBox .coupon2 {top: 18%;}
+  .visual .slide li .imgBox .cou3 {top: 23%;}
+  .visual .slide li .imgBox .cou3 img {width: 45%;}
+  .visual .slide li .txtBox {width: 60%;}
+  .visual .slide li .txtBox .top {font-size: 2.4vw;}
+  .visual .slide li .txtBox h2 {font-size: 4.8vw;}
+  .visual .slide li .txtBox .bottom {font-size: 2vw;}
+  .visual .slide li .btn {margin: 30px 0;}
+  .visual .slide .slick-dots {bottom: 20%; left: 20%;}
+  .visual .slide li .imgBox .object2 img {width: 100%;}
+
+  .content .inner .txt {width: 100%;}
+  .content .inner .title {margin-bottom: 0; font-size: 28px;}
+  .content .inner .txt .sub {font-size: 20px;}
+  .content .inner p {font-size: 16px;}
+  .good .inner h2 {font-size: 28px;}
+  .good .inner ul li h3 {font-size: 20px; margin-bottom: 0px;}
+  .good .inner ul li p {font-size: 16px;}
+  .good .inner ul li span img {width: 20px;}
+  .good .inner ul {display: block;}
+  .good .inner ul li span {left: 18%;}
+  .good .inner ul li {width: 80%; margin: 0 auto 40px ;}
+
+  .story .inner {display: block; margin: a auto; padding: 100px 0 560px;}
+  .story .inner .left {width: 100%;}
+  .story .inner .right {width: 100%;}
+  .story .inner .left h2 {margin-bottom: 20px; font-size: 28px;display: inline-block;}
+  .story .inner.motion .txtBox {display: inline-block;}
+  .story .inner .left .txtBox p {display: none;}
+  .story .inner .left .txtBox a {display: inline-block; margin-left: 200px; font-size: 16px; }
+  .story .inner .left .txtBox span {font-size: 14px;}
+
+  .membership .inner .top {margin-bottom: 75px;}
+  .membership .inner .top.motion h2 {font-size: 32px;}
+  .membership .inner .top.motion p {font-size: 15px;}
+  .membership .inner .bottom ul li {height: 11vh;}
+  .membership .inner .bottom ul li p {font-size: 16px;}
+  .membership .inner .bottom .earth {top: -7%;}
+
+  .filterHow .inner h2 {font-size: 28px;}
+  .filterHow .inner .btn {font-size: 16px;}
+  .filterHow .inner .filter li {margin: 20px;}
+  .filterHow .inner .filter li h3 {font-size: 18px;}
+  .filterHow .inner .filter li p {font-size: 12px;}
+  
+
+  .question .top {padding: 35px 0; display: block; margin: 0 auto; text-align: center;}
+  .question .top .FAQtxt {width: 100%;}
+  .question .top .FAQtxt h2 {font-size: 28px; line-height: 1.2; margin-bottom: 20px;}
+  .question .top.motion .FAQbox {width: 100%;}
+  .question .top .FAQtxt .faq {display: none;}
+  .question .top .FAQbox .mySwiper .swiper-wrapper .swiper-slide span {font-size: 50px;}
+  .question .top .FAQbox .mySwiper .swiper-wrapper .swiper-slide p {font-size: 16px;}
+  .question .bottom li h2 {font-size: 20px; margin:8px 0;}
+  .question .bottom li p {font-size: 12px; margin-bottom: 20px;}
+  .question .bottom li a {font-size: 16px;}
+  .question .bottom li span {display: none;}
+
+  footer {height: 400px;}
+  footer .top h2 {font-size: 20px;}
+  footer .bottom .left {width: 60%;}
+  footer .bottom .left h3 {font-size: 16px;}
+  footer .bottom .contact p {width: 250px; font-size: 14px;}
+  footer .bottom .name span {font-size: 16px;}
+  footer .bottom .left p {font-size: 14px;}
+  footer .bottom .right {width: 20%;}
+  footer .bottom .right h3 {font-size: 16px;}
+  footer .bottom .right a p {font-size: 14px;}
+} 
+
+/* 440px이하 */
+@media screen and (max-width:440px){
+  .innerHeader {padding: 0 30px;}
+  .innerHeader .logo a img {width: 50%;}
+  .innerHeader .logo a img:nth-child(2) {width: 20px; top: 7px;}
+  .innerHeader .menuOpen {font-size: 20px;}
+  header.on {height: 50px;}
+  header.on .logo {width: 50%;}
+  .contentsInner {margin-bottom: 314px;}
+  .visual .slide li .imgBox .object {right: 10%; width: 70%;}
+  .visual .slide li .imgBox .object img {width: 100%;}
+  .visual .slide li .txtBox {left: 18%; top: 30%; width: 55%; z-index: 10;}
+  .visual .slide li .txtBox h2 {font-size: 6vw; margin: 10px 0;}
+  .visual .slide li .btn {margin: 20px 0; padding: 10px;}
+  .visual .slide .slick-dots {bottom: 24%; left: 50%;}
+  .visual .slide .slick-dots li {width: 4px;height: 4px;}
+  .slick-arrow {display: none;}
+  .visual .slide li .imgBox .bal1 {display: none;}
+  .visual .slide li .imgBox .bal2 {display: none;}
+
+  .content .inner {margin: 30px 0;}
+  .content .inner video {height: 280px;}
+  .content .inner .txt .sub {font-size: 3.5vw;}
+  .content .inner p {font-size: 3vw;}
+  .story .inner .left .txtBox a {font-size: 2.6vw; margin: 0; padding-left: 80px;}
+  .story .inner .left .txtBox span {font-size: 11px;}
+  .story .inner {padding-bottom: 400px;}
+  .membership .inner {padding-bottom:0 ;}
+  .membership .inner .top .memeberLogo {margin-bottom: 20px; width: 100px;}
+  .membership .inner .top.motion p {font-size: 2.4vw;}
+  .membership .inner .bottom ul li {width: 45%; height: 22vh; padding: 10px;}
+  .membership .inner .bottom ul li p {font-size: 2.4vw; margin-top: 0px;}
+  .membership .inner .bottom .earth {display: none;}
+  .membership .inner .bottom ul li .searchBox {display: block; }
+  .membership .inner .bottom ul li .txt {padding: 8px 16px; margin: 12px 0 18px;}
+  .membership .inner .bottom ul li .searchicon {display: none;}
+  .membership .inner .bottom ul li .subtxt {display: block; margin-bottom: 0; font-size: 2.4vw; margin-top: 12px;}
+  .membership .inner .top {margin-bottom: 30px;}
+
+  .filterHow .inner .filter li {margin: 0; width: 42%;}
+  .filterHow .inner .btn {display: inline-block; margin: 180px auto 0; }
+  .filterHow .inner .btxt {display: none;}
+  .question .inner {padding: 40px 0 60px;}
+
+  .question .top .FAQbox .mySwiper .swiper-wrapper .swiper-slide p {font-size: 2vw;}
+  .question .top .FAQbox .mySwiper .swiper-wrapper .swiper-slide {height: 160px;}
+  .question .bottom li {padding: 20px 12px;}
+  .question .bottom li a {font-size: 2vw; padding: 10px;}
+
+  footer {height: 314px;}
+  footer .inner {font-size: 10px;}
+  footer .top h2 {font-size: 16px;}
+  footer .bottom {padding: 15px;}
+  footer .bottom .left h3 {font-size: 12px;}
+  footer .bottom .right h3 {font-size: 12px;}
+  footer .bottom .right a {margin-bottom: 9px;}
+  footer .bottom .contact p {margin-bottom: 11px; font-size: 12px;}
+  footer .bottom .left {width: 50%;}
+  footer .bottom .right {width: 25%;}
+}
+
+/* 360px이하 */
+@media screen and (max-width:360px){
+
+  .visual .slide li .imgBox .object2 {bottom: -50px;}
+  .visual .slide li .imgBox .object2 img {width: 120%;}
+  .visual .slide li .txtBox {width: 100%;}
+  .slick-active .bg {height: 100%;}
+  .slick-arrow.slick-prev::after {display: none;}
+  .slick-arrow.slick-next::after {display: none;}
+
+  .content .inner .title {font-size: 20px;}
+
+  .good .inner ul li h3 {font-size: 16px;}
+  .good .inner ul li span {left: 14%;}
+  .good .inner ul li p {font-size: 14px;}
+  .good .inner h2 {font-size: 20px;}
+
+  .story .inner .left .txtBox a { padding-left: 190px; }
+  .membership .inner .top.motion p {color: #8D8D8D;}
+  .membership .inner {padding: 64px 0 ;}
+  .membership .inner .top.motion h2 {font-size: 20px;}
+  .membership .inner .bottom .earth {display: block; width: 60%;}
+  .membership .inner .bottom ul li:nth-child(1) {display: none;}
+  .membership .inner .bottom ul li:nth-child(2) {display: none;}
+
+  .filterHow .inner h2 {font-size: 20px;}
+  .filterHow .inner .filter {background: #B2E6FF; padding: 20px 0; border-radius: 30px;}
+  .filterHow .inner .bg {display: none;}
+  .filterHow .inner .filter {padding-left: 0; display: block; justify-content: center; }
+  .filterHow .inner .filter li {width: 100%; margin-bottom: 30px;}
+  .question .top .FAQtxt h2 {font-size: 20px;}
+  .question .bottom li h2 {font-size: 14px;}
+  .question .bottom li p {font-size: 10px;}
+
+  footer .bottom {padding: 10px 0;}
+  footer .bottom .right a p {font-size: 12px;}
+  footer .bottom .right {width: 30%;}
+
+
+}
